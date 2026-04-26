@@ -13,5 +13,7 @@
     swayosd
     fzf
     asahi-bless
+    localsend
+    lazygit
   ];
 }
