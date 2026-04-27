@@ -14,5 +14,6 @@
     asahi-bless
     localsend
     lazygit
+    python3
   ];
 }
