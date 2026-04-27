@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   nixvim = import (
@@ -16,8 +17,8 @@ in {
     ./packages.nix
   ];
 
-  home.username = "umutkzl";
-  home.homeDirectory = "/home/umutkzl";
+  home.username = lib.mkDefault "umutkzl";
+  home.homeDirectory = lib.mkDefault "/home/umutkzl";
   home.stateVersion = "25.11";
   home.enableNixpkgsReleaseCheck = false;
 

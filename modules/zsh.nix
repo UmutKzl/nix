@@ -12,7 +12,7 @@
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
-      hms = "home-manager switch";
+      hms = "nix run home-manager/master -- switch --flake ~/.config/home-manager";
       vi = "nvim";
       ".." = "cd ..";
       "..." = "cd ../..";
