@@ -2,16 +2,22 @@
   description = "UmutKzl's Home Manager config";
 
   inputs = {
-    nixpkgs.url = "github:nix-community/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
+    nixvim,
     ...
   }: let
     system = "aarch64-linux";
@@ -19,8 +25,10 @@
   in {
     homeConfigurations."umutkzl" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-
-      modules = [./home.nix];
+      modules = [
+        ./home.nix
+        nixvim.homeModules.nixvim
+      ];
     };
   };
 }
