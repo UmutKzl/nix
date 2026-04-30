@@ -16,5 +16,7 @@
     lazydocker
     python3
     zoxide
+    ffmpeg
+    libva-utils
   ];
 }
