@@ -13,6 +13,8 @@
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
       hms = "nix run home-manager/master -- switch --flake ~/.config/home-manager";
+      lg = "lazygit";
+      ld = "lazydocker";
       vi = "nvim";
       cd = "z";
       ".." = "cd ..";
