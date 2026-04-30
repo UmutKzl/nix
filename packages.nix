@@ -13,6 +13,7 @@
     fzf
     asahi-bless
     lazygit
+    lazydocker
     python3
     zoxide
   ];
