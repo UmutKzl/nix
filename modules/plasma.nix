@@ -15,7 +15,7 @@
     };
 
     kwin.virtualDesktops = {
-      number = 10;
+      number = 6;
     };
 
     shortcuts = {
