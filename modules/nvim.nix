@@ -21,6 +21,7 @@
       friendly-snippets.enable = true;
       toggleterm.enable = true;
       bufferline.enable = true;
+      nvim-autopairs.enable = true;
 
       which-key = {
         enable = true;
