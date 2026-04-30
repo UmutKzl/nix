@@ -12,8 +12,8 @@
     swayosd
     fzf
     asahi-bless
-    localsend
     lazygit
     python3
+    zoxide
   ];
 }

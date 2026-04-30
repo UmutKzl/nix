@@ -14,6 +14,7 @@
       update = "sudo nixos-rebuild switch";
       hms = "nix run home-manager/master -- switch --flake ~/.config/home-manager";
       vi = "nvim";
+      cd = "z";
       ".." = "cd ..";
       "..." = "cd ../..";
     };
@@ -25,7 +26,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "sudo" "docker" "fzf"];
+      plugins = ["git" "sudo" "docker" "fzf" "zoxide"];
       theme = "robbyrussell";
     };
 
