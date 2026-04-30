@@ -10,6 +10,12 @@
     nixvim = {
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
   };
 
@@ -18,6 +24,7 @@
     nixpkgs,
     home-manager,
     nixvim,
+    plasma-manager,
     ...
   }: let
     system = "aarch64-linux";
@@ -28,6 +35,7 @@
       modules = [
         ./home.nix
         nixvim.homeModules.nixvim
+        plasma-manager.homeModules.plasma-manager
       ];
     };
   };
