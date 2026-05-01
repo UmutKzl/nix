@@ -13,6 +13,7 @@
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
       hms = "nix run home-manager/master -- switch --flake ~/.config/home-manager";
+      ytfzfm = "ytfzf -m -d --ytdl-opts='-x --audio-format mp3'";
       lg = "lazygit";
       ld = "lazydocker";
       vi = "nvim";
