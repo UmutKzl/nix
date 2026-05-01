@@ -11,6 +11,8 @@
     fastfetch
     swayosd
     fzf
+    ytfzf
+    mpv
     asahi-bless
     lazygit
     lazydocker
@@ -18,5 +20,6 @@
     zoxide
     ffmpeg
     libva-utils
+    qbittorrent
   ];
 }
