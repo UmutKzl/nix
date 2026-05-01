@@ -1,22 +1,30 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.catppuccin-kde]; # install catppuccin
+{pkgs, ...}: let
+  myWallpaper = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/old-car.jpg";
+    hash = "sha256-ozAEAlV05T/psmZ4oJuoHeFbju8ikpVnPc9BBjj+soQ=";
+  };
+in {
+  home.packages = with pkgs; [catppuccin-kde kdePackages.krohnkite]; # install theme and scripts
 
   programs.plasma = {
     enable = true;
 
     workspace = {
-      clickItemTo = "open";
-      cursor.theme = "Catppuccin-Frappe-Blue-Cursors";
+      clickItemTo = "open"; # one click to open, not select
       windowDecorations = {
         library = "org.kde.breeze";
         theme = "Breeze";
       };
-      wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Mountain/contents/images/mountain.jpg";
+      wallpaper = "${myWallpaper}"; # set wallpaper
     };
 
     kwin.virtualDesktops = {
-      number = 6;
+      number = 6; # 6 virtual desktops
     };
+
+    configFile."kwinrc"."Plugins"."krohnkiteEnabled" = true; # enable tiling
+
+    configFile."kdeglobals"."KDE"."AnimationDurationFactor" = 0.5; # speed up animations
 
     shortcuts = {
       "kwin" = {
@@ -53,9 +61,6 @@
       "ksmserver" = {
         "Lock Session" = "Ctrl+Meta+Q";
       };
-      "org.kde.krunner.desktop" = {
-        "_launch" = "Meta+Space";
-      };
       "services/com.mitchellh.ghostty.desktop" = {
         "_launch" = "Meta+Return";
       };
@@ -64,6 +69,29 @@
       };
     };
 
+    krunner = {
+      position = "center";
+      shortcuts.launch = "Meta+R";
+    };
+
+    window-rules = [
+      {
+        description = "Remove Titlebar";
+        match = {
+          window-class = {
+            value = ".*";
+            type = "regex";
+          };
+        };
+        apply = {
+          noborder = {
+            value = true;
+            apply = "force";
+          };
+        };
+      }
+    ];
+
     input = {
       touchpads = [
         {
@@ -71,9 +99,9 @@
           name = "Apple MTP multi-touch";
           productId = "0351";
           vendorId = "05ac";
-          middleButtonEmulation = true;
-          naturalScroll = false;
-          tapToClick = false;
+          middleButtonEmulation = true; # three finger press to middle click
+          naturalScroll = false; # disable natural scroll
+          tapToClick = false; # disable tap to click, I want to press
         }
       ];
     };
@@ -85,21 +113,21 @@
         alignment = "center";
         lengthMode = "fill";
         widgets = [
-          "org.kde.plasma.kickoff"
-          {
-            name = "org.kde.plasma.icontasks";
-            config = {
-              General = {
-                launchers = [
-                  "applications:com.mitchellh.ghostty.desktop"
-                  "applications:org.kde.dolphin.desktop"
-                  "applications:firefox.desktop"
-                ];
-              };
-            };
-          }
-          "org.kde.plasma.marginsseparator"
+          # "org.kde.plasma.kickoff"
+          # {
+          # name = "org.kde.plasma.icontasks";
+          # config = {
+          #   General = {
+          # launchers = [
+          #   "applications:com.mitchellh.ghostty.desktop"
+          #   "applications:org.kde.dolphin.desktop"
+          #   "applications:firefox.desktop"
+          # ];
+          # };
+          # };
+          # }
           "org.kde.plasma.pager"
+          "org.kde.plasma.panelspacer"
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];
