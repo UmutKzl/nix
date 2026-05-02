@@ -21,5 +21,9 @@
     ffmpeg
     libva-utils
     qbittorrent
+    distrobox
+    obsidian
+    nerd-fonts.jetbrains-mono
+    nextcloud-client
   ];
 }
