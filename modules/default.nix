@@ -1,18 +1,15 @@
 {pkgs, ...}: {
   imports = [
     ./env.nix
-    ./font.nix
-    ./fuzzel.nix
     ./ghostty.nix
     ./nvim.nix
-    ./plasma.nix
+    ./vscodium.nix
     ./zsh.nix
     ./git.nix
-    # ./mako.nix
-    # ./cursor.nix
-    # ./icons.nix
+    ./ollama.nix
+    ./gnupg.nix
+    ./gnome.nix
+    # ./plasma.nix
     # ./hyprland.nix
-    # ./waybar.nix
-    # ./theme.nix
   ];
 }

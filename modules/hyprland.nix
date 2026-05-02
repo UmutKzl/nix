@@ -4,7 +4,7 @@
     hash = "sha256-ozAEAlV05T/psmZ4oJuoHeFbju8ikpVnPc9BBjj+soQ=";
   };
 in {
-  home.packages = [pkgs.swaybg];
+  home.packages = with pkgs; [swaybg nerd-fonts.jetbrains-mono noto-fonts noto-fonts-cjk-sans liberation_ttf];
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -88,5 +88,120 @@ in {
         "$mod, mouse:273, resizewindow"
       ];
     };
+  };
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        height = 38;
+        modules-left = ["hyprland/workspaces"];
+        modules-right = ["battery" "clock" "tray"];
+        "hyprland/workspaces" = {
+          disable-scroll = true;
+          all-outputs = true;
+        };
+        "clock" = {
+          format = "{:%H:%M}   ";
+          format-alt = "{:%A, %B %d, %Y}  ";
+        };
+        "battery" = {
+          format = "{capacity}% {icon}  ";
+          format-icons = [" " " " " " " " " "];
+        };
+      };
+    };
+    style = ''
+      * {
+        border: none;
+        font-family: "JetBrainsMono Nerd Font";
+        font-size: 13px;
+      }
+      window#waybar {
+        background: rgba(43, 48, 59, 0.5);
+        color: #ffffff;
+      }
+      #workspaces button {
+        padding: 0 5px;
+        background: transparent;
+        color: white;
+      }
+      #workspaces button.active {
+        background: #64727D;
+        border-bottom: 3px solid #ffffff;
+      }
+    '';
+  };
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        terminal = "${pkgs.ghostty}/bin/ghostty";
+        layer = "overlay";
+      };
+
+      colors = {
+        background = "1e1e2edd";
+        text = "cdd6f4ff";
+        prompt = "bac2deff";
+        placeholder = "7f849cff";
+        input = "cdd6f4ff";
+        match = "89b4faff";
+        selection = "585b70ff";
+        selection-text = "cdd6f4ff";
+        selection-match = "89b4faff";
+        counter = "7f849cff";
+        border = "89b4faff";
+      };
+
+      border = {
+        width = 2;
+        radius = 10;
+      };
+    };
+  };
+
+  fonts.fontconfig.enable = true;
+
+  gtk = {
+    enable = true;
+
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 10;
+    };
+
+    iconTheme = {
+      package = pkgs.catppuccin-papirus-folders;
+      name = "Papirus-Dark";
+    };
+
+    theme = {
+      package = pkgs.catppuccin-gtk;
+      name = "catppuccin-frappe-blue-standard";
+    };
+  };
+
+  services.mako = {
+    enable = true;
+    settings = {
+      background-color = "#1e1e2e";
+      text-color = "#cdd6f4";
+      border-color = "#89b4fa";
+      progress-color = "over #313244";
+    };
+    extraConfig = ''
+      [urgency=high]
+      border-color=#fab387
+    '';
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.catppuccin-cursors.latteDark;
+    name = "Catppuccin Latte Dark";
+    size = 16;
   };
 }
