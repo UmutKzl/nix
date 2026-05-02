@@ -14,27 +14,32 @@
         vspacecode.whichkey
       ];
       userSettings = {
-        "nix.formatterPath" = "alejandra";
-        "workbench.colorTheme" = "Catppuccin Mocha";
-        "catppuccin.accentColor" = "blue";
+        "nix.formatterPath" = "alejandra"; # set nix formatter
+        "workbench.colorTheme" = "Catppuccin Mocha"; # set theme
+        "catppuccin.accentColor" = "blue"; # set accent color
 
+        # keybindings
         "vim.normalModeKeyBindingsNonRecursive" = [
           {
+            # file picker
             before = ["<Space>" "f" "f"];
             commands = ["workbench.action.quickOpen"];
           }
 
           {
+            # commander
             before = ["<Space>" "p"];
             commands = ["workbench.action.showCommands"];
           }
 
           {
+            # format
             before = ["<Space>" "f" "m"];
             commands = ["workbench.action.formatDocument"];
           }
 
           {
+            # which-key
             before = ["\\"];
             commands = ["whichkey.show"];
           }

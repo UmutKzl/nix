@@ -1,4 +1,5 @@
 {pkgs, ...}: let
+  # set wallpaper
   myWallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/old-car.jpg";
     hash = "sha256-ozAEAlV05T/psmZ4oJuoHeFbju8ikpVnPc9BBjj+soQ=";
@@ -6,13 +7,14 @@
 in {
   home.packages = with pkgs; [swaybg nerd-fonts.jetbrains-mono noto-fonts noto-fonts-cjk-sans liberation_ttf];
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = true; # enable hyprland
     settings = {
-      "$mod" = "SUPER";
-      exec-once = ["waybar" "hyprpaper" "swayosd-server" "swaybg -i ${myWallpaper} -m fill" "mako"];
+      "$mod" = "SUPER"; # set super as mod key
+      exec-once = ["waybar" "hyprpaper" "swayosd-server" "swaybg -i ${myWallpaper} -m fill" "mako"]; # autostart
 
-      monitor = ", preferred, auto, 1.6";
+      monitor = ", preferred, auto, 1.6"; # set 1.6 scaling
 
+      # animations
       animations = {
         enabled = true;
         bezier = [
@@ -28,6 +30,7 @@ in {
         ];
       };
 
+      # touchpad settings
       input = {
         touchpad = {
           tap-to-click = false;
@@ -37,6 +40,7 @@ in {
       };
 
       binde = [
+        # media buttons
         ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise --max-volume 80"
         ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower --max-volume 80"
 
@@ -46,6 +50,7 @@ in {
 
       bind =
         [
+          # shortuts
           "$mod, f, exec, firefox"
           "$mod shift, s, exec, grimblast copy area"
           "$mod, q, killactive"
@@ -80,15 +85,19 @@ in {
         ));
 
       bindr = [
+        # caps osd
         "CAPS, Caps_Lock, exec, swayosd-client --caps-lock"
       ];
 
       bindm = [
+        # move or resize windows with mod + left/right click
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
     };
   };
+
+  # waybar
   programs.waybar = {
     enable = true;
     settings = {
@@ -134,6 +143,7 @@ in {
     '';
   };
 
+  # app launcher
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -168,16 +178,19 @@ in {
   gtk = {
     enable = true;
 
+    # set font
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 10;
     };
 
+    # set icon theme
     iconTheme = {
       package = pkgs.catppuccin-papirus-folders;
       name = "Papirus-Dark";
     };
 
+    # set gtk theme
     theme = {
       package = pkgs.catppuccin-gtk;
       name = "catppuccin-frappe-blue-standard";
@@ -185,7 +198,7 @@ in {
   };
 
   services.mako = {
-    enable = true;
+    enable = true; # enable mako
     settings = {
       background-color = "#1e1e2e";
       text-color = "#cdd6f4";
@@ -199,6 +212,7 @@ in {
   };
 
   home.pointerCursor = {
+    # setup cursor
     gtk.enable = true;
     package = pkgs.catppuccin-cursors.latteDark;
     name = "Catppuccin Latte Dark";

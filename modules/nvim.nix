@@ -15,6 +15,7 @@
       colorcolumn = "120";
     };
     plugins = {
+      # list of plugins
       lualine.enable = true;
       fzf-lua.enable = true;
       web-devicons.enable = true;
@@ -23,6 +24,7 @@
       bufferline.enable = true;
       nvim-autopairs.enable = true;
 
+      # which-key
       which-key = {
         enable = true;
 
@@ -44,6 +46,7 @@
         };
       };
 
+      # completion
       blink-cmp = {
         enable = true;
         settings = {
@@ -67,6 +70,7 @@
         };
       };
 
+      # enable lsp
       lsp = {
         enable = true;
         servers = {
@@ -74,10 +78,12 @@
         };
       };
 
+      # formatter
       conform-nvim = {
         enable = true;
         settings = {
           formatters_by_ft = {
+            # set formatters
             nix = ["alejandra"];
           };
           format_on_save = {
@@ -87,6 +93,7 @@
         };
       };
     };
+
     autoCmd = [
       {
         event = ["CursorHold"];
@@ -109,6 +116,7 @@
     ];
 
     keymaps = [
+      # file picker
       {
         mode = "n";
         key = "<leader>ff";
@@ -118,6 +126,8 @@
           desc = "Find files";
         };
       }
+
+      # buffer picker
       {
         mode = "n";
         key = "<leader>fd";
@@ -127,6 +137,8 @@
           desc = "Find buffers";
         };
       }
+
+      # live grep
       {
         mode = "n";
         key = "<leader>fg";
@@ -136,6 +148,8 @@
           desc = "Find text (live grep)";
         };
       }
+
+      # next buffer
       {
         mode = "n";
         key = "<leader><tab><tab>";
@@ -145,6 +159,8 @@
           desc = "Next buffer";
         };
       }
+
+      # previous buffer
       {
         mode = "n";
         key = "<leader><tab>e";
@@ -154,6 +170,8 @@
           desc = "Previous buffer";
         };
       }
+
+      # next buffer
       {
         mode = "n";
         key = "<leader><tab>r";
@@ -163,6 +181,8 @@
           desc = "Next buffer";
         };
       }
+
+      # toggle terminal
       {
         mode = "n";
         key = "<C-/>";
@@ -181,6 +201,8 @@
           desc = "Terminal";
         };
       }
+
+      # press esc twice to exit terminal mode
       {
         mode = "t";
         key = "<Esc><Esc>";

@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   programs.gpg = {
-    enable = true;
+    enable = true; # enable gpg
   };
 
   services.gpg-agent = {
-    enable = true;
-    pinentry.package = pkgs.pinentry-tty;
+    enable = true; # enable gpg agent
+    pinentry.package = pkgs.pinentry-tty; # set pinentry package
   };
 }

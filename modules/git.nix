@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   programs.git = {
-    enable = true;
+    enable = true; # enable git
     settings = {
       user = {
-        name = "UmutKzl";
-        email = "umutkzl@protonmail.com";
+        name = "UmutKzl"; # set username
+        email = "umutkzl@protonmail.com"; # set mail
       };
     };
   };

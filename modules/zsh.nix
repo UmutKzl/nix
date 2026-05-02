@@ -4,11 +4,12 @@
   ...
 }: {
   programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+    enable = true; # enable zsh
+    enableCompletion = true; # enable completion
+    autosuggestion.enable = true; # enable autosuggestion
+    syntaxHighlighting.enable = true; # enable syntax highlighting
 
+    # aliases
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
@@ -16,8 +17,8 @@
       ytfzfm = "ytfzf -m -d --ytdl-opts='-x --audio-format mp3'";
       lg = "lazygit";
       ld = "lazydocker";
-      vi = "nvim";
-      cd = "z";
+      vi = "nvim"; # old habits
+      cd = "z"; # cd but better
       ".." = "cd ..";
       "..." = "cd ../..";
     };
@@ -28,9 +29,9 @@
     };
 
     oh-my-zsh = {
-      enable = true;
-      plugins = ["git" "sudo" "docker" "fzf" "zoxide"];
-      theme = "robbyrussell";
+      enable = true; # enable oh my zsh
+      plugins = ["git" "sudo" "docker" "fzf" "zoxide"]; # plugins
+      theme = "robbyrussell"; # theme
     };
 
     initContent = ''

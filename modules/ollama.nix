@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    opencode
+    opencode # add opencode
   ];
   services.ollama = {
-    enable = true;
+    enable = true; # enable ollama
   };
 }

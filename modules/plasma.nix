@@ -56,6 +56,7 @@ in {
     configFile."kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse"; # enable focus follows mouse
 
     shortcuts = {
+      # shortcuts
       "kwin" = {
         "Overview" = "none";
 
@@ -160,11 +161,11 @@ in {
           # };
           # };
           # }
-          "org.kde.plasma.marginsseparator"
-          "org.kde.plasma.pager"
-          "org.kde.plasma.panelspacer"
-          "org.kde.plasma.systemtray"
-          "org.kde.plasma.digitalclock"
+          "org.kde.plasma.marginsseparator" # space a little
+          "org.kde.plasma.pager" # workspace switcher
+          "org.kde.plasma.panelspacer" # spacer
+          "org.kde.plasma.systemtray" # tray
+          "org.kde.plasma.digitalclock" # clock
         ];
       }
     ];

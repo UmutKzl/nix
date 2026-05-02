@@ -7,16 +7,17 @@
   myWallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/old-car.jpg";
     hash = "sha256-ozAEAlV05T/psmZ4oJuoHeFbju8ikpVnPc9BBjj+soQ=";
-  };
+  }; # download wallpaper
 in {
   home.packages = with pkgs; [
-    gnomeExtensions.appindicator
-    gnomeExtensions.user-themes
-    nerd-fonts.jetbrains-mono
-    ulauncher
-    wmctrl
+    gnomeExtensions.appindicator # tray icons
+    gnomeExtensions.user-themes # user themes
+    nerd-fonts.jetbrains-mono # font
+    ulauncher # app launcher but better
+    wmctrl # some dependency
   ];
 
+  # start ulauncher
   systemd.user.services.ulauncher = {
     Unit = {
       Description = "Ulauncher";
@@ -34,6 +35,7 @@ in {
   gtk = {
     enable = true;
     gtk4.theme = config.gtk.theme;
+    # set theme
     theme = {
       name = "catppuccin-frappe-blue-standard";
       package = pkgs.catppuccin-gtk.override {
@@ -42,6 +44,7 @@ in {
       };
     };
 
+    # set icons
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
@@ -61,6 +64,7 @@ in {
   };
 
   dconf.settings = {
+    # shortcuts
     "org/gnome/desktop/wm/keybindings" = {
       close = ["<Super>q"];
       toggle-maximized = ["<Super>k"];
@@ -104,6 +108,7 @@ in {
       toggle-tiled-right = ["<Super>l"];
     };
 
+    # set font
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       monospace-font-name = "JetBrainsMono Nerd Font 11";
@@ -111,17 +116,20 @@ in {
       font-name = "JetBrainsMono Nerd Font 11";
     };
 
+    # background
     "org/gnome/desktop/background" = {
       picture-uri = "file://${myWallpaper}";
       picture-uri-dark = "file://${myWallpaper}";
       picture-options = "zoom";
     };
 
+    # touchpad settings
     "org/gnome/desktop/peripherals/touchpad" = {
       natural-scroll = false;
       tap-to-click = false;
     };
 
+    # enable some experimental features
     "org/gnome/mutter" = {
       experimental-features = [
         "scale-monitor-framebuffer"
@@ -134,6 +142,7 @@ in {
       num-workspaces = 9;
     };
 
+    # custom shortcuts
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
