@@ -8,10 +8,13 @@ Add these to your `/etc/nixos/configuration.nix`
 
 ```nix
 {
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
+  #services.desktopManager.plasma6.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  #services.displayManager.sddm.enable = true;
+  services.displayManager.gdm.enable = true;
   networking.networkmanager.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  allowUnfree = true;
 }
 ```
 
