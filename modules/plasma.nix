@@ -9,6 +9,33 @@ in {
   programs.plasma = {
     enable = true;
 
+    fonts = {
+      general = {
+        family = "JetBrainsMono Nerd Font";
+        pointSize = 11;
+      };
+      fixedWidth = {
+        family = "JetBrainsMono Nerd Font";
+        pointSize = 10;
+      };
+      menu = {
+        family = "JetBrainsMono Nerd Font";
+        pointSize = 10;
+      };
+      toolbar = {
+        family = "JetBrainsMono Nerd Font";
+        pointSize = 10;
+      };
+      small = {
+        family = "JetBrainsMono Nerd Font";
+        pointSize = 8;
+      };
+      windowTitle = {
+        family = "JetBrainsMono Nerd Font";
+        pointSize = 10;
+      };
+    };
+
     workspace = {
       clickItemTo = "open"; # one click to open, not select
       windowDecorations = {
@@ -26,6 +53,8 @@ in {
 
     configFile."kdeglobals"."KDE"."AnimationDurationFactor" = 0.5; # speed up animations
 
+    configFile."kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse"; # enable focus follows mouse
+
     shortcuts = {
       "kwin" = {
         "Overview" = "none";
@@ -33,10 +62,15 @@ in {
         "Window Close" = "Meta+Q";
         "Window Maximize" = "Meta+W";
 
-        "Window Quick Tile Left" = "Meta+H";
-        "Window Quick Tile Bottom" = "Meta+J";
-        "Window Quick Tile Top" = "Meta+K";
-        "Window Quick Tile Right" = "Meta+L";
+        # "Window Quick Tile Left" = "Meta+H";
+        # "Window Quick Tile Bottom" = "Meta+J";
+        # "Window Quick Tile Top" = "Meta+K";
+        # "Window Quick Tile Right" = "Meta+L";
+
+        "KrohnkiteFocusLeft" = "Meta+H";
+        "KrohnkiteFocusDown" = "Meta+J";
+        "KrohnkiteFocusUp" = "Meta+K";
+        "KrohnkiteFocusRight" = "Meta+L";
 
         "Switch to Desktop 1" = "Meta+1";
         "Switch to Desktop 2" = "Meta+2";
@@ -126,6 +160,7 @@ in {
           # };
           # };
           # }
+          "org.kde.plasma.marginsseparator"
           "org.kde.plasma.pager"
           "org.kde.plasma.panelspacer"
           "org.kde.plasma.systemtray"
